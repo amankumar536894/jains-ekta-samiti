@@ -1,0 +1,89 @@
+.addmemberpopup{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.659);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.addmemberpopupmain{
+    width: 50%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+.admecutmark{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+}
+.addmemberpopupactive{
+    display: flex;
+}
+.addmemfulldiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+.addmemhalfdiv{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.3rem;
+}
+.addmemhalfdiv p{
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgb(43, 43, 43);
+}
+.addmemhalfdiv input, .admemselect{
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    border: 1px solid rgb(190, 190, 190);
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgb(43, 43, 43);
+}
+.forfwid{
+    width: 100%;    
+}
+.choosephotolabel{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgb(190, 190, 190);
+    padding: 0.5rem 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgb(132, 132, 132);
+}
+.addnowmembtn{
+    width: 100%;
+    background-color: #000000;
+    color: white;
+    padding: 0.5rem 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

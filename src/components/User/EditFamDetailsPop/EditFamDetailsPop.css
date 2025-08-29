@@ -1,0 +1,29 @@
+.EditFamDetailsPop{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.796);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.EditFamDetailsPopmain{
+    width: 50%;
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+.editfmusercut{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+.EditFamDetailsPop-active{
+    display: flex;
+}

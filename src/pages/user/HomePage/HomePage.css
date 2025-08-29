@@ -1,0 +1,124 @@
+.homepage{
+    width: 100%;
+    background-color: #FFF9E7;
+}
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    background-color: #3E0E0E;
+}
+.headerleft{
+    color: white;
+    font-size: 1.8rem;
+}
+.headerright{
+    display: flex;
+    gap: 1rem;
+}
+.headerright p{
+    color: #3E0E0E;
+    background-color: #FFF9E7;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.forpersonal{
+    width: 100%;
+    display: flex;
+    padding: 2rem;
+    gap: 3rem;
+}
+.personalintroleft{
+    width: 60%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    background-color: white;
+    border-radius: 30px;
+}
+.personalintroright{
+    width: 40%;
+}
+.personalintroright img{
+    width: 100%;
+    border-radius: 30px;
+}
+.intro{
+    width: 100%;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-align: center;
+}
+.perintro{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+.editbtndetails{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgb(187, 187, 187);
+}
+.allfamilycontainer{
+    width: 100%;
+    padding: 2rem;
+}
+.headertitlecontainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.7rem;
+}
+.titlepro{
+    background-color: #3E0E0E;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.memtits{
+    width: 15%;
+}
+.reltitl{
+    width: 20%;
+}
+.bloodtits{
+    width: 10%;
+}
+.edutits{
+    width: 15%;
+}
+.ocutits{
+    width: 10%;
+}
+.contits{
+    width: 10%;
+}
+.edetits{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.edetitsbtn{
+    color: white;
+    background-color: red;
+    padding: 0.3rem 1rem;
+    border-radius: 5px;
+}
+.justtits{
+    background-color: #3E0E0E;
+}

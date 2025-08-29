@@ -1,0 +1,136 @@
+.adduserallbox {
+    width: 100%;
+    padding: 2rem;
+}
+
+.addmemberheaderbox {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: 0.5px solid rgb(240, 240, 240);
+}
+
+.addmemberrightbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+    background-color: #405189;
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.addmembericon {
+    width: 1rem;
+}
+
+.addmemberdetailhead {
+    width: 100%;
+    padding: 1rem 0rem;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    border: 0.5px solid rgba(195, 195, 195, 0.277);
+}
+
+.addmemberdetailhead::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.addmemberforextrawid {
+    width: 200%;
+    overflow-x: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgb(122, 122, 122);
+    padding: 0.5rem 1rem;
+}
+
+.crudbtn {
+    width: 12%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
+}
+.addfam{
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    background-color: #299CDB;
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+.adedit{
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    background-color: #405189;
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+.forbold{
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgb(34, 34, 34);
+}
+.forwhitebg{
+    background-color: white;
+}
+.addregis {
+    width: 12%;
+}
+
+.addfamhead {
+    width: 18%;
+}
+
+.addfaname {
+    width: 20%;
+}
+
+.addgot {
+    width: 10%;
+}
+
+.addadd {
+    width: 35%;
+}
+
+.addbuzz {
+    width: 40%;
+}
+
+.addedu {
+    width: 10%;
+}
+
+.addocpu {
+    width: 10%;
+}
+
+.addcont {
+    width: 10%;
+}
+
+.addstst,
+.addate {
+    width: 10%;
+}

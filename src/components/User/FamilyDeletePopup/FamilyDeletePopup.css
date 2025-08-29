@@ -1,0 +1,53 @@
+.familydeletepopup{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.796);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.familydeletepopupmain{
+    width: 35%;
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+.familydeletepopup-active{
+    display: flex;
+}
+.famdcut{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+.delpoptext{
+    text-align: center;
+    font-size: 1.5rem ;
+    font-weight: 600;
+}
+.delpopfbtns{
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+    margin-top: 1rem;
+}
+.delpopfbtns p{
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.delpopfbtnscancel{
+    background-color: black;
+    color: white;
+}
+.delpopfbtnsdelete{
+    background-color: red;
+    color: white;
+}

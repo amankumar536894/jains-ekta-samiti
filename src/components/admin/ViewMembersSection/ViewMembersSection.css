@@ -1,0 +1,51 @@
+.viewmembersection{
+    width: 100%;
+    padding: 1.5rem;
+}
+.viewmembertitles{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.8rem;
+    text-decoration: none;
+}
+.viewmemberimg{
+    width: 20%;
+}
+.viewheadname{
+    width: 25%;
+}
+.viewfathername{
+    width: 25%;
+}
+.viewgotra{
+    width: 20%;
+}
+.viewnum{
+    width: 15%;
+}
+.viewimgbox{
+    width: 50%;
+    height: 100%;
+    aspect-ratio: 5/3.5;
+    border: 1px solid gray;
+}
+.viewimgbox img{
+    width: 100%;
+    height: 100%;
+}
+.forwhitebg{
+    background-color: white;
+    font-size: 0.9rem;
+    color: rgb(60, 60, 60);
+    font-weight: 500;
+}
+.normalbg{
+    font-size: 0.9rem;
+    color: rgb(91, 91, 91);
+    font-weight: 400;
+    cursor: pointer;
+}
+.normalbg:hover{
+    background-color: rgba(178, 178, 178, 0.311);
+}

@@ -1,0 +1,165 @@
+.dashsection{
+    width: 83%;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: #F3F3F9;
+}
+.topnavbaar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+}
+.adminprofile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.adminprofile img{
+    width: 2rem;
+    border-radius: 50%;
+}
+.detailnavbaar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    background-color: rgb(208, 208, 208);
+}
+.welcometext{
+    font-size: 1rem;
+}
+.welcomeright{
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(81, 81, 81);
+}
+.forallfour{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 2rem;
+}
+.forperfour{
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: white;
+}
+.forperfour{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.leftperfour{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.leftperfourtitle{
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: rgb(59, 59, 59);
+}
+.leftperfourdata{
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(110, 110, 110);
+}
+.righticonper{
+    background-color: #405189;
+    color: white;
+    border-radius: 8px;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.7rem;
+}
+.recentlist{
+    width: 100%;
+    padding: 2rem;
+}
+.toprecent{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 1rem;
+    border: 0.5px solid rgba(128, 128, 128, 0.205);
+}
+.headerrecent{
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgb(84, 84, 84);
+    border: 0.5px solid rgba(128, 128, 128, 0.205);
+}
+.registerdiv{
+    width: 12%;
+}
+.headdiv{
+    width: 20%;
+}
+.fatherdiv{
+    width: 15%;
+}
+.gotradiv{
+    width: 8%;
+}
+.addressdiv{
+    width: 8%;
+}
+.citydiv{
+    width: 8%;
+}
+.statediv{
+    width: 8%;
+}
+.contactdiv{
+    width: 10%;
+}
+.statusdiv{
+    width: 12%;
+}
+.datediv{
+    width: 8%;
+}
+.fordark{
+    color: black;
+}
+
+.loader-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25rem;
+}
+
+.loader {
+    width: 50px;
+    padding: 8px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #25b09b;
+    --_m: 
+      conic-gradient(#0000 10%,#000),
+      linear-gradient(#000 0 0) content-box;
+    -webkit-mask: var(--_m);
+            mask: var(--_m);
+    -webkit-mask-composite: source-out;
+            mask-composite: subtract;
+    animation: l3 1s infinite linear;
+  }
+  @keyframes l3 {to{transform: rotate(1turn)}}

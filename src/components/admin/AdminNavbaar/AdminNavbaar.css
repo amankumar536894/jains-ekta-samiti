@@ -1,0 +1,43 @@
+.adminNavbaar{
+    width: 17%;
+    height: 100%;
+    background-color: #405189;
+    padding: 1rem 1rem;
+}
+.logotext{
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+}
+.adminnavbox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+.adminnavs{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1rem;
+    gap: 0.5rem;
+    color: white;
+    padding: 0.9rem;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.adminnavs:hover, .active{
+    background-color: #32406d;
+}
+.dashicon{
+    width: 1.5rem;
+}
+.adminnavs p{
+    font-size: 1rem;
+}

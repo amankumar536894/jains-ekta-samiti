@@ -1,0 +1,29 @@
+.AddFamilyUser{
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.815);
+}
+.AddFamilyUsermain{
+    background-color: white;
+    width: 50%;
+    padding: 2rem;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.adfmcut{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+.AddFamilyUseractive{
+    display: flex;
+}
