@@ -4,7 +4,7 @@ import { X, ImagePlus } from 'lucide-react'
 import axios from 'axios'
 
 
-const AddMemberPopup = ({ addMemberPopup, setAddMemberPopup }) => {
+const AddMemberPopup = ({ addMemberPopup, setAddMemberPopup, onMemberAdded }) => {
   const [formdata, setFormdata] = useState({
     head_name: '',
     father_name: '',
@@ -70,7 +70,11 @@ const AddMemberPopup = ({ addMemberPopup, setAddMemberPopup }) => {
       })
       console.log("member added", response.data)
       alert("Member added successfully!");
-      setAddMemberPopup(false);
+      if (response.data?.member) {
+        onMemberAdded?.(response.data.member);
+      } else {
+        setAddMemberPopup(false);
+      }
     } catch (err) {
       console.error("Error while adding member:", err);
       alert("Failed to add member");

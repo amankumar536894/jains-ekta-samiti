@@ -4,7 +4,7 @@ import './FamilyDeletePopup.css'
 import axios from 'axios';
 
 
-const FamilyDeletePopup = ({famdel, setFamdel, familyMemberID}) => {
+const FamilyDeletePopup = ({famdel, setFamdel, familyMemberID, onFamilyDeleted}) => {
   const deleteFamilyMember = async () => {
     try {
       const token = localStorage.getItem('token_admin');
@@ -17,6 +17,7 @@ const FamilyDeletePopup = ({famdel, setFamdel, familyMemberID}) => {
       if (response.data.success) {
         alert("Family member deleted successfully ✅");
         setFamdel(false);
+        onFamilyDeleted?.(familyMemberID);
       }
     } catch (error) {
       alert("Failed to delete family member ❌");

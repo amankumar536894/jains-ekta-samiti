@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 
 
 
-const EditMyDetails = ({ editmydet, setEditmydet }) => {
+const EditMyDetails = ({ editmydet, setEditmydet, onMainMemberUpdated }) => {
     const [filename, setFilename] = useState('')
     const [file, setfile] = useState(null)
     const [formdata, setFormdata] = useState({
@@ -102,7 +102,7 @@ const EditMyDetails = ({ editmydet, setEditmydet }) => {
           console.log(response.data.member);
           setFormdata(response.data.member);
           alert("Member updated successfully ✅");
-          setEditmydet(false);
+          onMainMemberUpdated?.(response.data.member);
         }
       } catch (error) {
         console.error(error);

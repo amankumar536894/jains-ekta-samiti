@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 
-const AddFamilyPopup = ({ addfamilypopup, setAddfamilypopup, userId }) => {
+const AddFamilyPopup = ({ addfamilypopup, setAddfamilypopup, userId, onFamilyAdded }) => {
     const [formdata, setFormdata] = useState({
         name: "",
         gender: "",
@@ -49,6 +49,7 @@ const AddFamilyPopup = ({ addfamilypopup, setAddfamilypopup, userId }) => {
                 alert("Family member added successfully")
                 console.log(response.data.data)
                 setAddfamilypopup(false);
+                onFamilyAdded?.(response.data.data);
                 setFormdata({
                     name: "",
                     gender: "",

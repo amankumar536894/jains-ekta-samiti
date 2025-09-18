@@ -92,6 +92,30 @@ const HomePage = () => {
         fetchFamilyMemberData();
     }, []);
 
+    const handleFamilyAdded = (created) => {
+        if (!created) return;
+        setFamilyMemberData((prev) => [created, ...prev]);
+        setAdfams(false);
+    };
+
+    const handleFamilyDeleted = (id) => {
+        if (!id) return;
+        setFamilyMemberData((prev) => prev.filter((f) => f.id !== id));
+        setFamdel(false);
+    };
+
+    const handleFamilyUpdated = (updated) => {
+        if (!updated?.id) return;
+        setFamilyMemberData((prev) => prev.map((f) => f.id === updated.id ? { ...f, ...updated } : f));
+        setEditfamuser(false);
+    };
+
+    const handleMainMemberUpdated = (updated) => {
+        if (!updated) return;
+        setMainMemberData(updated);
+        setEditmydet(false);
+    };
+
     return (
         <>
             <div className="homepage">
@@ -137,7 +161,7 @@ const HomePage = () => {
                         </div>
                     </div>
                     <div className="personalintroright">
-                        <img src={`${import.meta.env.VITE_BACKEND_URL}/public${mainMemberData?.photo}`}/>
+                        <img src={`${import.meta.env.VITE_BACKEND_URL}${mainMemberData?.photo}`}/>
                     </div>
                 </div>
                 <div className="allfamilycontainer">
@@ -172,10 +196,10 @@ const HomePage = () => {
                     })}
 
                 </div>
-                <AddFamilyUser adfams={adfams} setAdfams={setAdfams} />
-                <EditMyDetails editmydet={editmydet} setEditmydet={setEditmydet} />
-                <FamilyDeletePopup famdel={famdel} setFamdel={setFamdel} familyMemberID={familyMemberID} />
-                <EditFamDetailsPop editfamuser={editfamuser} setEditfamuser={setEditfamuser} familyMemberID={familyMemberID} />
+                <AddFamilyUser adfams={adfams} setAdfams={setAdfams} onFamilyAdded={handleFamilyAdded} />
+                <EditMyDetails editmydet={editmydet} setEditmydet={setEditmydet} onMainMemberUpdated={handleMainMemberUpdated} />
+                <FamilyDeletePopup famdel={famdel} setFamdel={setFamdel} familyMemberID={familyMemberID} onFamilyDeleted={handleFamilyDeleted} />
+                <EditFamDetailsPop editfamuser={editfamuser} setEditfamuser={setEditfamuser} familyMemberID={familyMemberID} onFamilyUpdated={handleFamilyUpdated} />
             </div>
         </>
     )

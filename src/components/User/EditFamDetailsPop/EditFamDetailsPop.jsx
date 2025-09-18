@@ -5,7 +5,7 @@ import { X } from 'lucide-react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
-const EditFamDetailsPop = ({ editfamuser, setEditfamuser, familyMemberID }) => {
+const EditFamDetailsPop = ({ editfamuser, setEditfamuser, familyMemberID, onFamilyUpdated }) => {
     const [formdata, setFormdata] = useState({
         name: '',
         gender: '',
@@ -63,6 +63,7 @@ const EditFamDetailsPop = ({ editfamuser, setEditfamuser, familyMemberID }) => {
                 alert("Family member updated successfully ✅");
                 setFormdata(response.data.data);
                 setEditfamuser(false);
+                onFamilyUpdated?.(response.data.data);
             }
         } catch (error) {
             alert("Failed to update family member ❌");

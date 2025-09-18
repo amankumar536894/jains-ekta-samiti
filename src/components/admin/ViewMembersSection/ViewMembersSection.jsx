@@ -10,6 +10,8 @@ import { useEffect, useState } from 'react';
 const ViewMembersSection = () => {
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
 
   useEffect(() => {
     const fetchMembers = async () => {
@@ -34,6 +36,33 @@ const ViewMembersSection = () => {
     fetchMembers();
   }, []);
 
+  // debounce search input
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedQuery(searchQuery.trim()), 400);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    const searchMembers = async () => {
+      if (!debouncedQuery) return; // do not trigger for empty
+      setLoading(true);
+      try {
+        const token = localStorage.getItem('token_admin');
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/main-members/search`, {
+          params: { q: debouncedQuery, page: 1, limit: 25 },
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (response.data.success) {
+          setMembers(response.data.members || []);
+        }
+      } catch (error) {
+        console.error('Error searching members:', error);
+      }
+      setLoading(false);
+    };
+    searchMembers();
+  }, [debouncedQuery]);
+
   return (
     <>
       <div className="dashsection">
@@ -54,6 +83,15 @@ const ViewMembersSection = () => {
         </div>
 
         <div className="viewmembersection">
+          <div className="searchbar-row">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search by name, phone, email, gotra, registration..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
           <div className="viewmembertitles forwhitebg">
             <p className='viewmemberimg'>Image</p>
             <p className='viewheadname'>Head of Family Name</p>

@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-const EditMemberPopup = ({ editmemberpopup, setEditmemberpopup, userId }) => {
+const EditMemberPopup = ({ editmemberpopup, setEditmemberpopup, userId, onMemberUpdated }) => {
     const [formdata, setFormdata] = useState({
         head_name: "",
         father_name: "",
@@ -44,7 +44,7 @@ const EditMemberPopup = ({ editmemberpopup, setEditmemberpopup, userId }) => {
 
             if (response.data.success) {
                 alert("Member updated successfully ✅");
-                setEditmemberpopup(false);
+                onMemberUpdated?.(response.data.member);
             }
         } catch (error) {
             console.error(error);

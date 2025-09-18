@@ -5,6 +5,7 @@ import './SingleFamilySection.css'
 import { Menu, ChevronRight } from 'lucide-react';
 import profilepic from "../../../assets/images/profilepic.png";
 import FamilyDeletePopup from '../../User/FamilyDeletePopup/FamilyDeletePopup';
+import AddFamilyPopup from '../../admin/AddFamilyPopup/AddFamilyPopup';
 import EditFamDetailsPop from '../../User/EditFamDetailsPop/EditFamDetailsPop';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -13,10 +14,12 @@ import { useEffect } from 'react';
 const SingleFamilySection = () => {
     const [famdel, setFamdel] = useState(false)
     const [editfamuser, setEditfamuser] = useState(false)
+    const [addfamilypopup, setAddfamilypopup] = useState(false)
     const [familydata, setFamilydata] = useState([])
     const [loading, setLoading] = useState(false)
     const [errors, setErrors] = useState('')
     const [familyMemberID, setFamilyMemberID] = useState(null)
+    const [mainMemberName, setMainMemberName] = useState("")
 
     const { user_id } = useParams();
     console.log(user_id)
@@ -44,10 +47,39 @@ const SingleFamilySection = () => {
                 setLoading(false);
             }
         };
+        const fetchMainMember = async () => {
+            try {
+                const token = localStorage.getItem('token_admin');
+                const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/main-members/${user_id}`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                if (res.data?.success) {
+                    setMainMemberName(res.data.member?.head_name || "");
+                }
+            } catch (e) {
+                console.error('Error fetching main member:', e);
+            }
+        };
         if (user_id) {
             fetchFamilyData();
+            fetchMainMember();
         }
     }, [user_id]);
+
+    const handleFamilyDeleted = (id) => {
+        if (!id) return;
+        setFamilydata((prev) => prev.filter((f) => f.id !== id));
+    };
+
+    const handleFamilyUpdated = (updated) => {
+        if (!updated?.id) return;
+        setFamilydata((prev) => prev.map((f) => f.id === updated.id ? { ...f, ...updated } : f));
+    };
+
+    const handleFamilyAdded = (created) => {
+        if (!created) return;
+        setFamilydata((prev) => [created, ...prev]);
+    };
 
     const fixBloodGroupName = (blood_group) => {
         if(blood_group === 'A_pos'){
@@ -86,11 +118,17 @@ const SingleFamilySection = () => {
                     <div className="welcomeright">
                         <p>Jain Ekta Samiti</p>
                         <ChevronRight size={20} className="rightarrow" />
-                        <p>Family head Name</p>
+                        <p>{mainMemberName || 'Family Head'}</p>
                     </div>
                 </div>
 
                 <div className="viewmembersection">
+                    <div className="searchbar-row" style={{justifyContent:'space-between'}}>
+                        <div></div>
+                        <div className="addmemberrightbtn" onClick={() => { setAddfamilypopup(true); }}>
+                            <p>Add Family Member</p>
+                        </div>
+                    </div>
                     <div className="viewmembertitles forwhitebg">
                         <p className='viewmemberimg'>Family Member name</p>
                         <p className='viewheadname'>Relation</p>
@@ -127,8 +165,9 @@ const SingleFamilySection = () => {
                         })
                     )}
                 </div>
-                <FamilyDeletePopup famdel={famdel} setFamdel={setFamdel} familyMemberID={familyMemberID} />
-                <EditFamDetailsPop editfamuser={editfamuser} setEditfamuser={setEditfamuser} familyMemberID={familyMemberID} />
+                <FamilyDeletePopup famdel={famdel} setFamdel={setFamdel} familyMemberID={familyMemberID} onFamilyDeleted={handleFamilyDeleted} />
+                <EditFamDetailsPop editfamuser={editfamuser} setEditfamuser={setEditfamuser} familyMemberID={familyMemberID} onFamilyUpdated={handleFamilyUpdated} />
+                <AddFamilyPopup addfamilypopup={addfamilypopup} setAddfamilypopup={setAddfamilypopup} userId={user_id} onFamilyAdded={handleFamilyAdded} />
             </div>
         </>
     )

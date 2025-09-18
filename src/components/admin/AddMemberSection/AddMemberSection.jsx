@@ -43,6 +43,40 @@ const AddMemberSection = () => {
     fetchMembers();
   }, []);
 
+  const handleMemberAdded = (member) => {
+    if (!member) return;
+    setMembers((prev) => [member, ...prev]);
+    setAddMemberPopup(false);
+  };
+
+  const handleMemberUpdated = (updated) => {
+    if (!updated?.user_id) return;
+    setMembers((prev) => prev.map((m) => m.user_id === updated.user_id ? { ...m, ...updated } : m));
+    setEditmemberpopup(false);
+  };
+
+  const handleDeleteMember = async (userId) => {
+    const token = localStorage.getItem('token_admin');
+    const confirmed = window.confirm('Are you sure you want to delete this member? This action cannot be undone.');
+    if (!confirmed) return;
+
+    try {
+      setLoading(true);
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/main-members/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+      setMembers((prev) => prev.filter((m) => m.user_id !== userId));
+    } catch (error) {
+      setErrors(error?.response?.data?.error || error.message || 'Failed to delete member');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="dashsection">
@@ -87,10 +121,11 @@ const AddMemberSection = () => {
             {errors && <p>Error: {errors}</p>}
             {members.map((item) => {
               return (
-                <div className="addmemberforextrawid forwhitebg">
+                <div className="addmemberforextrawid forwhitebg" key={item.user_id}>
                   <div className="crudbtn">
                     <span className="addfam" onClick={() => { setAddfamilypopup(true); setSelectedMemberId(item.user_id)}}>Add Family</span>
                     <span className="adedit" onClick={() => { setEditmemberpopup(true); setSelectedMemberId(item.user_id) }}>Edit</span>
+                    <span className="adedit" onClick={() => handleDeleteMember(item.user_id)}>Delete</span>
                   </div>
                   <p className="addregis">{item.registration_no}</p>
                   <p className="addfamhead">{item.head_name}</p>
@@ -108,9 +143,9 @@ const AddMemberSection = () => {
 
           </div>
         </div>
-        <AddMemberPopup addMemberPopup={addMemberPopup} setAddMemberPopup={setAddMemberPopup} />
+        <AddMemberPopup addMemberPopup={addMemberPopup} setAddMemberPopup={setAddMemberPopup} onMemberAdded={handleMemberAdded} />
         <AddFamilyPopup addfamilypopup={addfamilypopup} setAddfamilypopup={setAddfamilypopup} userId={selectedMemberId}/>
-        <EditMemberPopup editmemberpopup={editmemberpopup} setEditmemberpopup={setEditmemberpopup}   userId={selectedMemberId} />
+        <EditMemberPopup editmemberpopup={editmemberpopup} setEditmemberpopup={setEditmemberpopup}   userId={selectedMemberId} onMemberUpdated={handleMemberUpdated} />
       </div>
     </>
   );

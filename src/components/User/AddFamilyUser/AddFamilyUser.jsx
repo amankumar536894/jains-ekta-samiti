@@ -4,7 +4,7 @@ import './AddFamilyUser.css'
 import { X } from 'lucide-react'
 import axios from 'axios'   
 
-const AddFamilyUser = ({ adfams, setAdfams }) => {
+const AddFamilyUser = ({ adfams, setAdfams, onFamilyAdded }) => {
     const main_member_id = localStorage.getItem('main_member_id')
     const [formdata, setFormdata] = useState({
         name: "",
@@ -37,7 +37,7 @@ const AddFamilyUser = ({ adfams, setAdfams }) => {
             if (response.data.success) {
                 alert("Family member added successfully")
                 console.log(response.data.data)
-                setAdfams(false);
+                onFamilyAdded?.(response.data.data);
                 setFormdata({
                     name: "",
                     gender: "",
