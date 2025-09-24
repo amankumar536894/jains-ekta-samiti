@@ -13,26 +13,27 @@ const ViewMembersSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
 
-  useEffect(() => {
-    const fetchMembers = async () => {
-      setLoading(true);
-      try {
-        const token = localStorage.getItem('token_admin')
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/main-members?page=1&limit=1000`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
+  const fetchMembers = async () => {
+    setLoading(true);
+    try {
+      const token = localStorage.getItem('token_admin')
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/main-members?page=1&limit=1000`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
           }
-        );
-        if (response.data.success) {
-          setMembers(response.data.members || []);
         }
-      } catch (error) {
-        console.error('Error fetching members:', error);
+      );
+      if (response.data.success) {
+        setMembers(response.data.members || []);
       }
-      setLoading(false);
-    };
+    } catch (error) {
+      console.error('Error fetching members:', error);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
     fetchMembers();
   }, []);
 
@@ -44,7 +45,11 @@ const ViewMembersSection = () => {
 
   useEffect(() => {
     const searchMembers = async () => {
-      if (!debouncedQuery) return; // do not trigger for empty
+      if (!debouncedQuery) {
+        // If query cleared, reload full list
+        await fetchMembers();
+        return;
+      }
       setLoading(true);
       try {
         const token = localStorage.getItem('token_admin');
